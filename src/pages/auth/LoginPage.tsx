@@ -22,7 +22,6 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const { theme, setTheme } = useThemeStore();
   const { user } = useAuthStore();
-  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [forgotOpen, setForgotOpen] = useState(false);
