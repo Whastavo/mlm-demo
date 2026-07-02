@@ -1,5 +1,5 @@
 import { Link } from '@/lib/router';
-import { Boxes, Mail, Phone, MapPin, Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
+import { Boxes, Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
 import { useConfig } from '@/store/configStore';
 
 export default function Footer() {
