@@ -39,7 +39,7 @@ export const supabaseDatabaseService: DatabaseInterface = {
   },
 
   async insert<T>(table: string, data: Partial<T>): Promise<InsertResult<T>> {
-    const { data: result, error } = await supabase.from(table).insert(data).select().single();
+    const { data: result, error } = await supabase.from(table).insert(data as never).select().single();
     if (error) {
       return { error: error.message };
     }
@@ -47,7 +47,7 @@ export const supabaseDatabaseService: DatabaseInterface = {
   },
 
   async update<T>(table: string, id: string, data: Partial<T>): Promise<UpdateResult<T>> {
-    const { data: result, error } = await supabase.from(table).update(data).eq('id', id).select().single();
+    const { data: result, error } = await supabase.from(table).update(data as never).eq('id', id).select().single();
     if (error) {
       return { error: error.message };
     }
@@ -65,7 +65,7 @@ export const supabaseDatabaseService: DatabaseInterface = {
   async upsert<T>(table: string, data: Partial<T>, conflictKey = 'id'): Promise<InsertResult<T>> {
     const { data: result, error } = await supabase
       .from(table)
-      .upsert(data, { onConflict: conflictKey })
+      .upsert(data as never, { onConflict: conflictKey })
       .select()
       .single();
     if (error) {
