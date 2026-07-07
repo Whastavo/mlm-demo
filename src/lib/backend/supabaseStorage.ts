@@ -33,13 +33,15 @@ export const supabaseStorageService: StorageInterface = {
     if (error || !data) {
       return [];
     }
-    return data.map((item) => ({
-      name: item.name,
-      size: item.metadata?.size ?? 0,
-      contentType: item.metadata?.mimetype ?? 'application/octet-stream',
-      url: supabase.storage.from(bucket).getPublicUrl(path ? `${path}/${item.name}` : item.name).data.publicUrl,
-      createdAt: item.created_at,
-    }));
+return data.map((item) => ({
+  name: item.name,
+  size: item.metadata?.size ?? 0,
+  contentType: item.metadata?.mimetype ?? 'application/octet-stream',
+  url: supabase.storage
+    .from(bucket)
+    .getPublicUrl(path ? `${path}/${item.name}` : item.name).data.publicUrl,
+  createdAt: item.created_at ?? undefined,
+}));
   },
 
   async remove(bucket, paths): Promise<DeleteResult> {
